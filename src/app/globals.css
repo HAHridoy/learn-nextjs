@@ -1,6 +1,5 @@
 @import "tailwindcss";
-
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -24,3 +23,8 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.testing-purpose-css-class {
+  color: red;
+  background-color: rgb(240, 240, 240);
+} */
