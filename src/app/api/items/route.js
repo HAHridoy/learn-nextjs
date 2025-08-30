@@ -1,11 +1,19 @@
-export async function GET() {
-  const data = {
-    message: 'Hello from the items API route!',
-    error: 'false',
-    status: 200
-  }
+import dbConnect from "@/lib/dbConnect";
+
+// export async function GET() {
+//   const data = await dbConnect("sample_airbnb.listingsAndReviews").find({}).toArray();
  
-  return Response.json({ data })
+//   return Response.json({ data })
+// }
+export async function GET() {
+  try {
+    const collection = await dbConnect("post");
+    const data = await collection.find({}).toArray();
+
+    return Response.json(data);
+  } catch (error) {
+    return Response.json({ error: error.message }, { status: 500 });
+  }
 }
 
 export async function POST(req) {
