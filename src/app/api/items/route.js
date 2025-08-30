@@ -1,10 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
 
-// export async function GET() {
-//   const data = await dbConnect("sample_airbnb.listingsAndReviews").find({}).toArray();
- 
-//   return Response.json({ data })
-// }
 export async function GET() {
   try {
     const collection = await dbConnect("post");
@@ -18,6 +13,12 @@ export async function GET() {
 
 export async function POST(req) {
   const postedData = await req.json();
- 
-  return Response.json({ postedData })
+  try {
+    const collection = await dbConnect("post");
+    const data = await collection.insertOne(postedData);
+
+    return Response.json(data);
+  } catch (error) {
+    return Response.json({ error: error.message }, { status: 500 });
+  }
 }
