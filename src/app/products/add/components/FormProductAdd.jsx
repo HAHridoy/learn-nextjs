@@ -3,13 +3,14 @@
 import { useRouter } from "next/navigation";
 
 export default function FormProductAdd() {
+      const {NEXT_PUBLIC_BASE_URL} = process.env;
     const router = useRouter();
     const handleSubmit = async (e) =>{
         e.preventDefault();
         const form = e.target;
         const productName = form.productName.value;
         const payload = { productName };
-        const res = await fetch("http://localhost:3000/api/items", {
+        const res = await fetch(`${NEXT_PUBLIC_BASE_URL}/api/items`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
