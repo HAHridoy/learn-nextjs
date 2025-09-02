@@ -1,5 +1,10 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 
+export const collectionNames = {
+    TEST_USER: "test_user",
+    PRACTICE_DATA: "practice_data"
+}
+
 // ✅ Validate env variables
 if (!process.env.MONGODB_URI) {
   throw new Error("❌ MONGODB_URI is not defined in environment variables");
